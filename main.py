@@ -82,3 +82,26 @@ def algo_couplage(G):
                     C.add(j)
                     break
     return C
+
+
+#TODO : vérifier que l'algo glouton fonctionne
+def algo_glouton(G):
+    """
+    Entrée : un graphe G
+    Sortie : une couverture de G
+    """
+    C = set()
+    g = Graph(list(G.V))
+    g.adj = {v: list(G.adj[v]) for v in G.V}  # Copier les listes d'adjacences
+
+    while g.V:
+        u, deg = get_max_degree_vertex(g)
+        if deg == 0:
+            break
+        v = g.get_neighbors(u)[0]
+        C.add(u)
+        C.add(v)
+        g.remove_vertex(u)
+        g.remove_vertex(v)
+
+    return C
