@@ -4,7 +4,7 @@ from main import *
 
 if __name__ == "__main__":
     # Création d'un graphe
-    g = Graph(9)
+    g = Graph([0, 1, 2, 3, 4, 5, 8])
     g.add_edge(0, 1)
     g.add_edge(0, 2)
     g.add_edge(1, 2)
@@ -34,4 +34,8 @@ if __name__ == "__main__":
     # Test graphe aléatoire
     print("Graphe aléatoire:")
     g_random = gen_alea_graph(9, 0.3)
+    g_random.print()
+
+    print(algo_couplage(g_random))
+    print("Graphe après algo_couplage:")
     g_random.print()
